@@ -10,9 +10,16 @@ const Hero = () => {
     offset: ["start start", "end start"],
   });
 
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const contentY = useTransform(scrollYProgress, [0, 0.5], [0, -50]);
+  // More dramatic movement with slow-mo easing - increased range for more apparent movement
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"], {
+    ease: (t) => t * t * (3 - 2 * t), // Smooth step easing for slow-mo feel
+  });
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0], {
+    ease: (t) => t * t * (3 - 2 * t),
+  });
+  const contentY = useTransform(scrollYProgress, [0, 0.5], [0, -50], {
+    ease: (t) => t * t * (3 - 2 * t),
+  });
 
   return (
     <section ref={ref} className="relative min-h-screen flex flex-col items-center justify-center px-6 md:px-12 lg:px-24 overflow-hidden">
@@ -43,9 +50,9 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
-          className="mb-14 md:mb-18"
+          className="mb-10 sm:mb-12 md:mb-14 lg:mb-18"
         >
-          <img src={logo} alt="Averbuch Foundation" className="h-48 md:h-64 lg:h-80 w-auto opacity-90" />
+          <img src={logo} alt="Averbuch Foundation" className="h-32 sm:h-40 md:h-56 lg:h-64 xl:h-80 w-auto opacity-90" />
         </motion.div>
 
         {/* Gold divider */}
@@ -61,7 +68,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
-          className="font-serif-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium text-center max-w-5xl leading-[1.1] tracking-tight"
+          className="font-serif-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-medium text-center max-w-5xl leading-[1.1] tracking-tight px-4"
         >
           Engineering Digital Infrastructure
           <br className="hidden sm:block" />
@@ -73,7 +80,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.9, ease: "easeOut" }}
-          className="mt-8 md:mt-10 text-muted-foreground text-base md:text-lg font-sans-body tracking-wide-custom text-center max-w-2xl leading-relaxed"
+          className="mt-6 sm:mt-8 md:mt-10 text-muted-foreground text-sm sm:text-base md:text-lg font-sans-body tracking-wide-custom text-center max-w-2xl leading-relaxed px-4"
         >
           We design and develop high performance websites built for scale.
         </motion.p>
@@ -83,7 +90,7 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.3, ease: "easeOut" }}
-          className="mt-16 md:mt-20"
+          className="mt-12 sm:mt-14 md:mt-16 lg:mt-20"
         >
           <a
             href="#inquire"

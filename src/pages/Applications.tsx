@@ -121,12 +121,12 @@ const Applications = () => {
           </div>
 
           {/* Section Header */}
-          <div className="text-center mb-12 md:mb-16">
+          <div className="text-center mb-10 sm:mb-12 md:mb-16 px-4">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-              className="font-serif-display text-3xl md:text-4xl lg:text-5xl font-medium mb-6 tracking-tight"
+              className="font-serif-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium mb-4 sm:mb-6 tracking-tight"
             >
               Join Our Team
             </motion.h1>

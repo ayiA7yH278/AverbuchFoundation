@@ -15,8 +15,13 @@ const ParallaxImage = ({ src, alt, height = "60vh", overlayOpacity = 0.55 }: Par
     offset: ["start end", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
+  // More dramatic movement with slow-mo easing - increased range for more apparent movement
+  const y = useTransform(scrollYProgress, [0, 1], ["-25%", "25%"], {
+    ease: (t) => t * t * (3 - 2 * t), // Smooth step easing for slow-mo feel
+  });
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0], {
+    ease: (t) => t * t * (3 - 2 * t),
+  });
 
   return (
     <div

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import PixelSnow from "./PixelSnow";
 
 const Inquiry = () => {
   const ref = useRef(null);
@@ -47,20 +48,36 @@ const Inquiry = () => {
   };
 
   return (
-    <section id="inquire" ref={ref} className="px-6 md:px-12 lg:px-24 py-24 md:py-32">
+    <section id="inquire" ref={ref} className="px-6 md:px-12 lg:px-24 py-24 md:py-32 relative">
+      <div className="absolute inset-0 z-0">
+        <PixelSnow 
+          color="#ffffff"
+          flakeSize={0.003}
+          minFlakeSize={1.0}
+          pixelResolution={4000}
+          speed={0.08}
+          density={0.8}
+          direction={175}
+          brightness={2.1}
+          depthFade={15}
+          farPlane={12}
+          gamma={0.4545}
+          variant="round"
+        />
+      </div>
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="max-w-2xl mx-auto"
+        className="max-w-2xl mx-auto relative z-10"
       >
         {/* Section Header */}
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-10 sm:mb-12 md:mb-16 px-4">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-            className="font-serif-display text-3xl md:text-4xl lg:text-5xl font-medium mb-6 tracking-tight"
+            className="font-serif-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium mb-4 sm:mb-6 tracking-tight"
           >
             Inquire
           </motion.h2>

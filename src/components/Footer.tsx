@@ -36,15 +36,15 @@ const Footer = () => {
         className="max-w-5xl mx-auto text-center"
       >
         {/* Signature with logo */}
-        <div className="flex items-center justify-center gap-3 mb-12">
-          <img src={footerLogo} alt="Averbuch Foundation" className="h-8 w-auto opacity-80" />
-          <p className="font-serif-display text-base md:text-lg text-foreground italic opacity-80">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 mb-8 sm:mb-10 md:mb-12">
+          <img src={footerLogo} alt="Averbuch Foundation" className="h-6 sm:h-7 md:h-8 w-auto opacity-80" />
+          <p className="font-serif-display text-sm sm:text-base md:text-lg text-foreground italic opacity-80 text-center sm:text-left">
             Built to Last. Designed to Lead.
           </p>
         </div>
 
         {/* Links */}
-        <nav className="flex flex-wrap justify-center gap-8 md:gap-12">
+        <nav className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-12">
           <a
             href="#"
             onClick={handleStudioClick}
@@ -68,33 +68,33 @@ const Footer = () => {
           </Link>
           <Link
             to="/legal"
-            className="font-sans-body text-xs tracking-monument uppercase text-muted-foreground hover:text-foreground transition-colors duration-500"
-          >
+              className="font-sans-body text-xs tracking-monument uppercase text-muted-foreground hover:text-foreground transition-colors duration-500"
+            >
             Legal
           </Link>
         </nav>
 
         {/* Contact Information */}
-        <div className="mt-12 md:mt-16">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-sm">
+        <div className="mt-8 sm:mt-10 md:mt-12 lg:mt-16">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 text-xs sm:text-sm">
             <a
               href="tel:+16696390988"
-              className="font-sans-body text-muted-foreground hover:text-foreground transition-colors duration-500"
+              className="font-sans-body text-muted-foreground hover:text-foreground transition-colors duration-500 break-all sm:break-normal"
             >
               +1 (669) - 639 - 0988
             </a>
-            <span className="hidden md:inline text-muted-foreground opacity-50">•</span>
+            <span className="hidden sm:inline text-muted-foreground opacity-50">•</span>
             <a
               href="mailto:eldarowfn@gmail.com"
-              className="font-sans-body text-muted-foreground hover:text-foreground transition-colors duration-500"
+              className="font-sans-body text-muted-foreground hover:text-foreground transition-colors duration-500 break-all sm:break-normal"
             >
               eldarowfn@gmail.com
             </a>
           </div>
         </div>
 
-        <div className="mt-16 md:mt-24 pt-8 border-t border-border">
-          <p className="font-sans-body text-xs text-muted-foreground tracking-wide-custom opacity-50">
+        <div className="mt-12 sm:mt-14 md:mt-16 lg:mt-24 pt-6 sm:pt-8 border-t border-border">
+          <p className="font-sans-body text-xs text-muted-foreground tracking-wide-custom opacity-50 px-4">
             © {new Date().getFullYear()} Averbuch Foundation. All rights reserved.
           </p>
         </div>

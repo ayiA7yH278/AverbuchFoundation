@@ -33,13 +33,13 @@ const Legal = () => {
             transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
             className="prose prose-lg max-w-none"
           >
-            <h1 className="font-serif-display text-4xl md:text-5xl font-medium mb-8 tracking-tight">
+            <h1 className="font-serif-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium mb-6 sm:mb-8 tracking-tight">
               Legal Notice / Disclaimer
             </h1>
 
             <div className="w-16 h-px divider-bronze mb-12" />
 
-            <div className="space-y-8 font-sans-body text-base md:text-lg text-foreground leading-relaxed">
+            <div className="space-y-6 sm:space-y-8 font-sans-body text-sm sm:text-base md:text-lg text-foreground leading-relaxed">
               <div className="mb-8">
                 <p className="mb-2 font-medium">Averbuch Foundation</p>
                 <p className="mb-2">Sole Proprietorship</p>
@@ -53,7 +53,7 @@ const Legal = () => {
               </section>
 
               <section>
-                <h2 className="font-serif-display text-2xl md:text-3xl font-medium mb-4 mt-8">
+                <h2 className="font-serif-display text-xl sm:text-2xl md:text-3xl font-medium mb-3 sm:mb-4 mt-6 sm:mt-8">
                   Services Disclaimer
                 </h2>
                 <p className="mb-4">
@@ -62,7 +62,7 @@ const Legal = () => {
               </section>
 
               <section>
-                <h2 className="font-serif-display text-2xl md:text-3xl font-medium mb-4 mt-8">
+                <h2 className="font-serif-display text-xl sm:text-2xl md:text-3xl font-medium mb-3 sm:mb-4 mt-6 sm:mt-8">
                   Third-Party Content
                 </h2>
                 <p className="mb-4">
@@ -71,7 +71,7 @@ const Legal = () => {
               </section>
 
               <section>
-                <h2 className="font-serif-display text-2xl md:text-3xl font-medium mb-4 mt-8">
+                <h2 className="font-serif-display text-xl sm:text-2xl md:text-3xl font-medium mb-3 sm:mb-4 mt-6 sm:mt-8">
                   Governing Law
                 </h2>
                 <p className="mb-4">
