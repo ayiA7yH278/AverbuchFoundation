@@ -1,0 +1,10 @@
+{
+  // Ensure all routes in this SPA are served by index.html
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ]
+}
+
