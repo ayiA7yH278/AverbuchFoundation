@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Hero from "@/components/Hero";
 import Capabilities from "@/components/Capabilities";
 import Philosophy from "@/components/Philosophy";
+import Gallery from "@/components/Gallery";
 import Inquiry from "@/components/Inquiry";
 import Footer from "@/components/Footer";
 import ParallaxImage from "@/components/ParallaxImage";
@@ -28,6 +29,7 @@ const Index = () => {
       <ParallaxImage src={abstractMid} alt="Abstract geometric forms" height="50vh" overlayOpacity={0.45} />
       <Philosophy />
       <ParallaxImage src={abstractBottom} alt="Abstract marble texture" height="40vh" overlayOpacity={0.5} />
+      <Gallery />
       <Inquiry />
       <Footer />
     </div>
