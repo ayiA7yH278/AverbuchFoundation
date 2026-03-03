@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import PixelSnow from "./PixelSnow";
+import AmbientMotionBackground from "./AmbientMotionBackground";
 
 const Inquiry = () => {
   const ref = useRef(null);
@@ -49,22 +49,7 @@ const Inquiry = () => {
 
   return (
     <section id="inquire" ref={ref} className="px-6 md:px-12 lg:px-24 py-24 md:py-32 relative">
-      <div className="absolute inset-0 z-0">
-        <PixelSnow 
-          color="#ffffff"
-          flakeSize={0.003}
-          minFlakeSize={1.0}
-          pixelResolution={800}
-          speed={0.08}
-          density={0.6}
-          direction={175}
-          brightness={2.1}
-          depthFade={15}
-          farPlane={10}
-          gamma={0.4545}
-          variant="round"
-        />
-      </div>
+      <AmbientMotionBackground opacity={0.85} />
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}

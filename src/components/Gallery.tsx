@@ -2,7 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import PixelSnow from "./PixelSnow";
+import AmbientMotionBackground from "./AmbientMotionBackground";
 
 const Gallery = () => {
   const ref = useRef(null);
@@ -10,22 +10,7 @@ const Gallery = () => {
 
   return (
     <section className="px-6 md:px-12 lg:px-24 py-24 md:py-36 lg:py-48 relative">
-      <div className="absolute inset-0 z-0">
-        <PixelSnow 
-          color="#ffffff"
-          flakeSize={0.003}
-          minFlakeSize={1.0}
-          pixelResolution={4000}
-          speed={0.08}
-          density={0.8}
-          direction={175}
-          brightness={2.1}
-          depthFade={15}
-          farPlane={12}
-          gamma={0.4545}
-          variant="round"
-        />
-      </div>
+      <AmbientMotionBackground opacity={0.85} />
       <div className="max-w-5xl mx-auto relative z-10 text-center">
         <motion.div
           ref={ref}

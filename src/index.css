@@ -147,3 +147,90 @@
     letter-spacing: 0.08em;
   }
 }
+
+/* Lightweight ambient motion background (no WebGL) */
+@keyframes ambient-drift-a {
+  0% {
+    transform: translate3d(-6%, -4%, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(6%, 5%, 0) scale(1.08);
+  }
+}
+
+@keyframes ambient-drift-b {
+  0% {
+    transform: translate3d(7%, 6%, 0) scale(1.02);
+  }
+  100% {
+    transform: translate3d(-7%, -6%, 0) scale(1.1);
+  }
+}
+
+@keyframes ambient-grid-shift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-6%, 6%, 0);
+  }
+}
+
+.ambient-motion {
+  position: absolute;
+  inset: 0;
+}
+
+.ambient-motion__blob {
+  position: absolute;
+  inset: -30%;
+  filter: blur(60px);
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.ambient-motion__blob--a {
+  background:
+    radial-gradient(60% 60% at 30% 35%, hsl(var(--bronze) / 0.22), transparent 62%),
+    radial-gradient(55% 55% at 70% 60%, hsl(var(--gold) / 0.14), transparent 64%);
+  animation: ambient-drift-a 18s ease-in-out infinite alternate;
+  opacity: 0.9;
+}
+
+.ambient-motion__blob--b {
+  background:
+    radial-gradient(55% 55% at 60% 30%, hsl(var(--gold) / 0.16), transparent 62%),
+    radial-gradient(65% 65% at 35% 70%, hsl(var(--bronze) / 0.18), transparent 66%);
+  animation: ambient-drift-b 26s ease-in-out infinite alternate;
+  opacity: 0.7;
+}
+
+.ambient-motion__grid {
+  position: absolute;
+  inset: -10%;
+  background-image:
+    linear-gradient(to right, hsl(var(--foreground) / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(var(--foreground) / 0.04) 1px, transparent 1px);
+  background-size: 90px 90px;
+  mask-image: radial-gradient(circle at 50% 45%, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 70%);
+  opacity: 0.35;
+  animation: ambient-grid-shift 22s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.ambient-motion__vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120% 80% at 50% 40%, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.55) 70%);
+  opacity: 0.9;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-motion__blob--a,
+  .ambient-motion__blob--b,
+  .ambient-motion__grid {
+    animation: none !important;
+  }
+}

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import PixelSnow from "./PixelSnow";
+import AmbientMotionBackground from "./AmbientMotionBackground";
 
 const capabilities = [
   {
@@ -52,22 +52,7 @@ const Capabilities = () => {
 
   return (
     <section className="px-6 md:px-12 lg:px-24 py-24 md:py-36 lg:py-48 relative">
-      <div className="absolute inset-0 z-0">
-        <PixelSnow 
-          color="#ffffff"
-          flakeSize={0.003}
-          minFlakeSize={1.0}
-          pixelResolution={800}
-          speed={0.08}
-          density={0.6}
-          direction={175}
-          brightness={2.1}
-          depthFade={15}
-          farPlane={10}
-          gamma={0.4545}
-          variant="round"
-        />
-      </div>
+      <AmbientMotionBackground opacity={0.85} />
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Section label */}
         <motion.div
