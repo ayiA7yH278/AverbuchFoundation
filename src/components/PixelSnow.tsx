@@ -112,7 +112,7 @@ void main() {
   vec3 timeAnim = timeSpeed * 0.1 * vec3(7.0, 8.0, 5.0);
 
   float t = 0.0;
-  for (int i = 0; i < 128; i++) {
+  for (int i = 0; i < 64; i++) {
     if (t >= uFarPlane) break;
     
     vec3 fpos = floor(pos);
@@ -190,6 +190,7 @@ export default function PixelSnow({
   const containerRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef(0);
   const isVisibleRef = useRef(true);
+  const isPageVisibleRef = useRef(true);
   const rendererRef = useRef<WebGLRenderer | null>(null);
   const materialRef = useRef<ShaderMaterial | null>(null);
   const resizeTimeoutRef = useRef<number | null>(null);
@@ -236,7 +237,17 @@ export default function PixelSnow({
     );
 
     observer.observe(container);
-    return () => observer.disconnect();
+    
+    // Pause when page is hidden
+    const handleVisibilityChange = () => {
+      isPageVisibleRef.current = !document.hidden;
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    
+    return () => {
+      observer.disconnect();
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
   }, []);
 
   // Main Three.js setup - only runs once
@@ -255,11 +266,10 @@ export default function PixelSnow({
       depth: false
     });
 
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    // Limit pixel ratio for better performance
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.setSize(container.offsetWidth, container.offsetHeight);
     renderer.setClearColor(0x000000, 0);
-    // Enable smooth rendering
-    renderer.setAnimationLoop(null);
     container.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
@@ -292,13 +302,21 @@ export default function PixelSnow({
     window.addEventListener('resize', handleResize);
 
     const startTime = performance.now();
+    let lastFrameTime = 0;
+    const targetFPS = 30; // Limit to 30 FPS for better performance
+    const frameInterval = 1000 / targetFPS;
+    
     const animate = () => {
       animationRef.current = requestAnimationFrame(animate);
 
-      // Only render if visible
-      if (isVisibleRef.current) {
-        material.uniforms.uTime.value = (performance.now() - startTime) * 0.001;
-        renderer.render(scene, camera);
+      // Only render if visible and page is visible, throttle to target FPS
+      if (isVisibleRef.current && isPageVisibleRef.current) {
+        const now = performance.now();
+        if (now - lastFrameTime >= frameInterval) {
+          material.uniforms.uTime.value = (now - startTime) * 0.001;
+          renderer.render(scene, camera);
+          lastFrameTime = now;
+        }
       }
     };
     animate();

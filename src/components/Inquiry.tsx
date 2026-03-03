@@ -54,13 +54,13 @@ const Inquiry = () => {
           color="#ffffff"
           flakeSize={0.003}
           minFlakeSize={1.0}
-          pixelResolution={4000}
+          pixelResolution={800}
           speed={0.08}
-          density={0.8}
+          density={0.6}
           direction={175}
           brightness={2.1}
           depthFade={15}
-          farPlane={12}
+          farPlane={10}
           gamma={0.4545}
           variant="round"
         />
