@@ -72,6 +72,13 @@ const Footer = () => {
             >
             Legal
           </Link>
+          <Link
+            to="/database"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="font-sans-body text-xs tracking-monument uppercase text-muted-foreground hover:text-foreground transition-colors duration-500"
+          >
+            Database
+          </Link>
         </nav>
 
         {/* Contact Information */}

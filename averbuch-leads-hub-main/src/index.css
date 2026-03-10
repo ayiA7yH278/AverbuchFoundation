@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 5%;
+    --foreground: 0 0% 92%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 92%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 92%;
+
+    --primary: 0 0% 92%;
+    --primary-foreground: 0 0% 5%;
+
+    --secondary: 0 0% 14%;
+    --secondary-foreground: 0 0% 80%;
+
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 50%;
+
+    --accent: 0 0% 14%;
+    --accent-foreground: 0 0% 92%;
+
+    --destructive: 0 72% 47%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 16%;
+    --input: 0 0% 16%;
+    --ring: 0 0% 40%;
+
+    --radius: 0.375rem;
+
+    /* Status colors */
+    --status-meeting: 122 38% 40%;
+    --status-hangup: 0 60% 50%;
+    --status-uninterested: 30 60% 50%;
+    --status-noresponse: 0 0% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+@layer utilities {
+  .font-mono-data {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@keyframes row-pulse-meeting {
+  0% { background-color: hsl(122 38% 40% / 0.15); }
+  100% { background-color: transparent; }
+}
+@keyframes row-pulse-hangup {
+  0% { background-color: hsl(0 60% 50% / 0.15); }
+  100% { background-color: transparent; }
+}
+@keyframes row-pulse-uninterested {
+  0% { background-color: hsl(30 60% 50% / 0.15); }
+  100% { background-color: transparent; }
+}
+@keyframes row-pulse-noresponse {
+  0% { background-color: hsl(0 0% 45% / 0.1); }
+  100% { background-color: transparent; }
+}
+
+.animate-pulse-meeting {
+  animation: row-pulse-meeting 300ms ease-out forwards;
+}
+.animate-pulse-hangup {
+  animation: row-pulse-hangup 300ms ease-out forwards;
+}
+.animate-pulse-uninterested {
+  animation: row-pulse-uninterested 300ms ease-out forwards;
+}
+.animate-pulse-noresponse {
+  animation: row-pulse-noresponse 300ms ease-out forwards;
+}

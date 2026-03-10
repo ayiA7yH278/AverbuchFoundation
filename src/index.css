@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -233,4 +233,74 @@
   .ambient-motion__grid {
     animation: none !important;
   }
+}
+
+/* Database component styles */
+@layer utilities {
+  .font-mono-data {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@keyframes row-pulse-meeting {
+  0% { background-color: hsl(122 38% 40% / 0.15); }
+  100% { background-color: transparent; }
+}
+@keyframes row-pulse-hangup {
+  0% { background-color: hsl(0 60% 50% / 0.15); }
+  100% { background-color: transparent; }
+}
+@keyframes row-pulse-uninterested {
+  0% { background-color: hsl(30 60% 50% / 0.15); }
+  100% { background-color: transparent; }
+}
+@keyframes row-pulse-noresponse {
+  0% { background-color: hsl(0 0% 45% / 0.1); }
+  100% { background-color: transparent; }
+}
+
+.animate-pulse-meeting {
+  animation: row-pulse-meeting 300ms ease-out forwards;
+}
+.animate-pulse-hangup {
+  animation: row-pulse-hangup 300ms ease-out forwards;
+}
+.animate-pulse-uninterested {
+  animation: row-pulse-uninterested 300ms ease-out forwards;
+}
+.animate-pulse-noresponse {
+  animation: row-pulse-noresponse 300ms ease-out forwards;
+}
+
+/* Status colors for database */
+:root {
+  --status-meeting: 122 38% 40%;
+  --status-hangup: 0 60% 50%;
+  --status-uninterested: 30 60% 50%;
+  --status-noresponse: 0 0% 45%;
+}
+
+.bg-status-meeting {
+  background-color: hsl(var(--status-meeting));
+}
+.bg-status-hangup {
+  background-color: hsl(var(--status-hangup));
+}
+.bg-status-uninterested {
+  background-color: hsl(var(--status-uninterested));
+}
+.bg-status-noresponse {
+  background-color: hsl(var(--status-noresponse));
+}
+.text-status-meeting {
+  color: hsl(var(--status-meeting));
+}
+.text-status-hangup {
+  color: hsl(var(--status-hangup));
+}
+.text-status-uninterested {
+  color: hsl(var(--status-uninterested));
+}
+.text-status-noresponse {
+  color: hsl(var(--status-noresponse));
 }
